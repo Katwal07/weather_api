@@ -38,7 +38,7 @@ class HomeScreenHelper extends StatelessWidget {
                   children: [
                     /// Heading Text of Home Helper Screen
                     _buildTextView(context),
-
+        
                     /// Skip Button of Home Helper Screen
                     _buildSkipButton(context),
                   ],

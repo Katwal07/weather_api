@@ -8,8 +8,10 @@ class WeatherLoadingState extends WeatherState{}
 
 class WeatherLoadedState extends WeatherState{
   final WeatherEntity weatherData;
+  final String? message;
 
-  WeatherLoadedState({required this.weatherData});
+  WeatherLoadedState({required this.weatherData, required this.message});
+
 }
 
 class FailToLoadWeatherState extends WeatherState{

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_api/common/widgets/appbar.dart';
+import 'package:weather_app_api/common/widgets/snackbar.dart';
 import 'package:weather_app_api/core/config/routes/routes_name.dart';
 import 'package:weather_app_api/core/config/theme/colors.dart';
 import 'package:weather_app_api/core/constant/text_constant.dart';
@@ -9,6 +10,7 @@ import 'package:weather_app_api/modules/home/presentation/logic/button/button_na
 import 'package:weather_app_api/modules/home/presentation/logic/geolocator/location_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/hive/hive_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/weather/weather_cubit.dart';
+import '../logic/weather/weather_state.dart';
 import '../widgets/home_screen_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,6 +18,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isShownSnackBar = false;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -31,14 +34,32 @@ class HomeScreen extends StatelessWidget {
           create: (context) => HiveCubit(),
         ),
       ],
-      child: Scaffold(
-        appBar: CustomAppBar(
-          title: TextConstant.weatherApi,
-          actions: [
-            _buildTextButton(context),
-          ],
+      child: BlocListener<WeatherCubit, WeatherState>(
+        listener: (context, state) {
+          if(state is FailToLoadWeatherState && !isShownSnackBar){
+            isShownSnackBar = true;
+            CustomSnackBar.showCustomSnackBar(context, AppColors.error, state.errorMessage);
+            Future.delayed(const Duration(seconds: 2), () {
+              isShownSnackBar = false;
+            });
+          }
+          if(state is WeatherLoadedState && !isShownSnackBar){
+            isShownSnackBar = true;
+            CustomSnackBar.showCustomSnackBar(context, AppColors.primaryColor, state.message!);
+            Future.delayed(const Duration(seconds: 2), () {
+              isShownSnackBar = false;
+            });
+          }
+        },
+        child: Scaffold(
+          appBar: CustomAppBar(
+            title: TextConstant.weatherApi,
+            actions: [
+              _buildTextButton(context),
+            ],
+          ),
+          body: HomeScreenWidget(),
         ),
-        body: HomeScreenWidget(),
       ),
     );
   }

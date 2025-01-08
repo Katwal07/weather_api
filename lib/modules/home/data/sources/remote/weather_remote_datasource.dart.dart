@@ -27,8 +27,8 @@ class WeatherApiSourceImpl extends WeatherApiSource {
           e.type == DioExceptionType.sendTimeout) {
         throw ServerException(message: "Unable To Connect To Server");
       }
-      throw ServerException(
-          message: e.response?.data['message'] ?? "An error occured");
+      return Left(ServerException(
+          message: "Failed to fetch weather details"));
     }
   }
 }

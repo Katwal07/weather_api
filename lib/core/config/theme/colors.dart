@@ -15,4 +15,5 @@ class AppColors{
   static Color error = Colors.red;
   static Color black = Colors.black;
   static Color grey = Colors.grey;
+  static Color transparent = Colors.transparent;
 }
