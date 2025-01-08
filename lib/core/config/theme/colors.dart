@@ -9,4 +9,8 @@ class AppColors{
   static Color containerColor = const Color(0XFFF4F4F4);
   static Color onSurfaceColor = const Color(0XFF272727);
   static Color onSurfaceContainerColor = const Color(0XFF272727);
+
+  /// Natural Shades
+  static Color white = Colors.white;
+  static Color error = Colors.red;
 }
