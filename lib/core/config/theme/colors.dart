@@ -13,4 +13,6 @@ class AppColors{
   /// Natural Shades
   static Color white = Colors.white;
   static Color error = Colors.red;
+  static Color black = Colors.black;
+  static Color grey = Colors.grey;
 }
