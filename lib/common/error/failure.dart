@@ -13,3 +13,7 @@ class UnExceptedFailure extends Failure{
   @override
   String toString() => "UnExpectedFailure: $message";
 }
+
+class CacheFailure extends Failure{
+  CacheFailure({required super.message});
+}

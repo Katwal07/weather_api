@@ -3,14 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_api/core/config/theme/colors.dart';
 import 'package:weather_app_api/core/constant/text_constant.dart';
 import 'package:weather_app_api/core/utils/res/resolution.dart';
+import 'package:weather_app_api/modules/home/domain/entities/location.dart';
 import 'package:weather_app_api/modules/home/domain/usecases/get_weather_details_usecase.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/button/button_name_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/geolocator/location_cubit.dart';
+import 'package:weather_app_api/modules/home/presentation/logic/hive/hive_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/weather/weather_cubit.dart';
 import 'package:weather_app_api/service_locator.dart';
 import '../../../../common/widgets/elevated_button.dart';
 import '../../../../common/widgets/text_field.dart';
 import '../logic/geolocator/location_state.dart';
+import '../logic/hive/hive_state.dart';
 import '../logic/weather/weather_state.dart';
 
 class HomeScreenWidget extends StatefulWidget {
@@ -128,13 +131,26 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         borderRadius:
             BorderRadius.circular(2.32 * AppResolution.widthMultiplier),
       ),
+
       /// Weather Cubit
       child: BlocBuilder<WeatherCubit, WeatherState>(
         builder: (context, state) {
           if (state is WeatherLoadedState) {
-            final iconUrl = state.weatherData.current!.condition!.icon!;
+            final iconUrl = state.weatherData.current!.condition!.icon ?? '';
             final fullIconUrl =
                 iconUrl.startsWith('http') ? iconUrl : 'https:$iconUrl';
+
+            /// Save The Location
+            final saveLocation = LocationEntityForStorage(
+              name: state.weatherData.location!.name ?? '',
+              tempC: state.weatherData.current!.tempC,
+              weatherCon: state.weatherData.current!.condition!.text ?? '',
+              weatherIcon: fullIconUrl,
+            );
+
+            /// Call The Cubit To Save the Location
+            context.read<HiveCubit>().saveNewLocation(saveLocation);
+
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -165,11 +181,64 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               ],
             );
           }
-          if(state is WeatherLoadingState){
-            return const Center(child: CircularProgressIndicator(),);
+          if (state is WeatherLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
-          if(state is FailToLoadWeatherState){
-            return Center(child: Text(state.errorMessage),);
+          if (state is FailToLoadWeatherState) {
+            return Center(
+              child: Text(state.errorMessage),
+            );
+          }
+          if (state is WeatherInitialState) {
+            context.read<HiveCubit>().getSavedLocation();
+            return BlocBuilder<HiveCubit, HiveState>(
+              builder: (context, hiveState) {
+                if (hiveState is HiveLoadedState &&
+                    hiveState.location != null) {
+                  final iconUrl = hiveState.location!.weatherIcon ?? '';
+                  final fullIconUrl = iconUrl.startsWith('http')
+                      ? iconUrl
+                      : iconUrl.isNotEmpty
+                          ? 'https:$iconUrl'
+                          : 'https://cdn.weatherapi.com/weather/64x64/day/116.png';
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.network(
+                        scale: 0.6,
+                        fullIconUrl,
+                      ),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Place Name: ${hiveState.location!.name}",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              "Temperature: ${hiveState.location!.tempC!}°C",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              "Weather Condition: ${hiveState.location!.weatherCon!}",
+                              style: Theme.of(context).textTheme.titleMedium,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                if (hiveState is FailToLoadHive) {
+                  return Center(child: Text("Hive is Empty"));
+                }
+                return const SizedBox.shrink();
+              },
+            );
           }
           return const SizedBox.shrink();
         },

@@ -8,3 +8,7 @@ class ServerException extends AppException{
   ServerException({required super.message});
 }
 
+class CacheException extends AppException{
+  CacheException({required super.message});
+}
+

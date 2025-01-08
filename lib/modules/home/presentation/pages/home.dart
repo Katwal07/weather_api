@@ -7,6 +7,7 @@ import 'package:weather_app_api/core/constant/text_constant.dart';
 import 'package:weather_app_api/core/utils/res/resolution.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/button/button_name_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/geolocator/location_cubit.dart';
+import 'package:weather_app_api/modules/home/presentation/logic/hive/hive_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/weather/weather_cubit.dart';
 import '../widgets/home_screen_widget.dart';
 
@@ -25,6 +26,9 @@ class HomeScreen extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LocationCubit()..getLocation(),
+        ),
+        BlocProvider(
+          create: (context) => HiveCubit(),
         ),
       ],
       child: Scaffold(

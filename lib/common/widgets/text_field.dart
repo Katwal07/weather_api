@@ -8,13 +8,14 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     this.prefixIcon,
     this.controller,
-    this.onChanged,
+    this.onChanged, this.onSaved,
   });
 
   final String? hintText;
   final Widget? prefixIcon;
   final TextEditingController? controller;
   final Function(String)? onChanged;
+  final Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CustomTextField extends StatelessWidget {
       width: double.infinity,
       height: 6.57 * AppResolution.heightMultiplier,
       child: TextFormField(
-        onChanged: onChanged,
+        onSaved: onSaved,
         controller: controller,
         decoration: InputDecoration(
           hintText: hintText,
