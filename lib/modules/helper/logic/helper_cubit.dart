@@ -8,7 +8,9 @@ class HelperCubit extends Cubit<HelperState> {
     try {
       await Future.delayed(Duration(milliseconds: 5000));
 
-      emit(HelperLoadedState());
+      if(!isClosed){
+        emit(HelperLoadedState());
+      }
     } catch (e) {
       emit(HelperFailureState(errorMessage: e.toString()));
     }
