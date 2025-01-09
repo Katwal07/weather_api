@@ -112,7 +112,7 @@ flutter test test/../bloc/..._test.dart
 
 ## Folder Structure Code Figure
 
-lib/
+```lib/
 ├── common/
 │   ├── constant/
 │   │   └── textconstant.dart
@@ -169,5 +169,6 @@ lib/
 │       │   └── widgets/
 │       │       └── weather_widget.dart
 │       └── di_container.dart
+```
 
 
