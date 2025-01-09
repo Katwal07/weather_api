@@ -1,8 +1,8 @@
-# Weather App
+# Weather App ☔️⚡️
 
 This is a weather application built using Flutter, providing users with weather details for their selected locations. The app fetches weather data from an API and displays it, along with the current temperature, location, and other relevant weather information.
 
-## Features
+## Features 🍀
 
 - Weather Data Fetching: Displays real-time weather details including temperature, location, and weather conditions.
 - Error Handling: Gracefully handles errors such as no location found.
@@ -10,7 +10,7 @@ This is a weather application built using Flutter, providing users with weather 
 - Unit Testing: The app is thoroughly tested using the bloc_test library, with mock data for isolated testing.
 - Clean Architecture: The app follows Clean Architecture principles to separate concerns and enhance scalability.
 - Dependency Injection: DI is used to inject dependencies such as the WeatherRepository, Usecases, and Cubits into the app to manage dependencies effectively and improve testability.
-## Tech Stack
+## Tech Stack 📲
 - Flutter: UI toolkit for building natively compiled applications for mobile, web, and desktop.
 - BLoC Pattern: Business logic component for separating UI from business logic, using Cubit for state management.
 - Dio: A powerful HTTP client for Dart, used for making network requests to external APIs.
@@ -21,7 +21,7 @@ This is a weather application built using Flutter, providing users with weather 
 - Build Runner: A tool for generating code in Flutter projects, often used in conjunction with packages like json_serializable to generate model classes.
 - Clean Architecture: A software design pattern that separates the system into layers with clear responsibilities to make the codebase more maintainable.
 - Dependency Injection: The process of providing dependencies (such as repositories, use cases) from the outside, rather than creating them inside the class, making the app easier to test and manage.
-## Architecture Overview
+## Architecture Overview 🕍
 - The app follows Clean Architecture, which is divided into multiple layers:
 1. Presentation Layer
 A. This layer is responsible for the UI and user interaction. It consists of:
@@ -47,7 +47,7 @@ A. The data layer is responsible for fetching and storing data. It consists of:
 
 
 
-## API Reference
+## API Reference 📚
 
 #### Get all weather details
 
@@ -69,7 +69,7 @@ A. The data layer is responsible for fetching and storing data. It consists of:
  
 
 
-## Setup and Installation
+## Setup and Installation 💻
 
 1. Clone the repository:
 
@@ -89,7 +89,7 @@ flutter pub get
 flutter run
 ```
     
-## Running Tests
+## Running Tests 🏃🏼‍♀️
 
 The project includes unit tests and bloc tests to ensure functionality.
 1. To run the unit tests:
@@ -104,11 +104,11 @@ flutter test test/../bloc/..._test.dart
 ```
 
 
-## Contact
+## Contact 📞
 - Feel free to reach out if you have any questions or suggestions!
 - Email: rohankatwal05@gmail.com
 
-# Additionally
+# Additionally 🎉
 
 ## Folder Structure Code Figure
 
