@@ -20,8 +20,8 @@ class LocationModelForStorageAdapter
     return LocationModelForStorage(
       name: fields[0] as String?,
       tempC: fields[1] as double?,
-      weatherCon: fields[2] is String ? fields[2] as String : null,
-      weatherIcon: fields[3] is String ? fields[3] as String : null,
+      weatherCon: fields[2] as String?,
+      weatherIcon: fields[3] as String?,
     );
   }
 

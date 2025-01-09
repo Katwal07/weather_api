@@ -11,11 +11,15 @@ import 'package:weather_app_api/modules/home/domain/repositories/weather_reposit
 import 'package:weather_app_api/service_locator.dart';
 
 class WeatherRepositoryImpl extends WeatherRepository {
+
+  final WeatherApiSource weatherApiSource;
+
+  WeatherRepositoryImpl({required this.weatherApiSource});
   @override
   Future<Either<Failure, WeatherEntity>> getCurrentWeather(
       String location, String aqi) async {
     Either returnedData =
-        await sl<WeatherApiSource>().getCurrentWeather(location, aqi);
+        await weatherApiSource.getCurrentWeather(location, aqi);
     return returnedData.fold((error) {
       return Left(mapExceptionToFailure(error));
     }, (data) {

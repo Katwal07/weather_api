@@ -1,5 +1,7 @@
-class WeatherModel {
-  WeatherModel({
+import 'package:equatable/equatable.dart';
+
+class WeatherModel extends Equatable {
+  const WeatherModel({
     required this.location,
     required this.current,
   });
@@ -17,10 +19,20 @@ class WeatherModel {
           : CurrentWeatherModel.fromJson(json["current"]),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "location": location?.toJson(),
+      "current": current?.toJson(),
+    };
+  }
+
+  @override
+  List<Object?> get props => [location, current];
 }
 
-class CurrentWeatherModel {
-  CurrentWeatherModel({
+class CurrentWeatherModel extends Equatable {
+  const CurrentWeatherModel({
     required this.lastUpdatedEpoch,
     required this.lastUpdated,
     required this.tempC,
@@ -117,7 +129,7 @@ class CurrentWeatherModel {
       uv: json["uv"],
       gustMph: json["gust_mph"],
       gustKph: json["gust_kph"],
-      airQuality: Map.from(json["air_quality"]).map(
+      airQuality: json["air_quality"] == null ? {} : Map.from(json["air_quality"]).map(
         (k, v) {
           return MapEntry<String, double>(
             k,
@@ -127,10 +139,79 @@ class CurrentWeatherModel {
       ),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "last_updated_epoch": lastUpdatedEpoch,
+      "last_updated": lastUpdated,
+      "temp_c": tempC,
+      "temp_f": tempF,
+      "is_day": isDay,
+      "condition": condition?.toJson(),
+      "wind_mph": windMph,
+      "wind_kph": windKph,
+      "wind_degree": windDegree,
+      "wind_dir": windDir,
+      "pressure_mb": pressureMb,
+      "pressure_in": pressureIn,
+      "precip_mm": precipMm,
+      "precip_in": precipIn,
+      "humidity": humidity,
+      "cloud": cloud,
+      "feelslike_c": feelslikeC,
+      "feelslike_f": feelslikeF,
+      "windchill_c": windchillC,
+      "windchill_f": windchillF,
+      "heatindex_c": heatindexC,
+      "heatindex_f": heatindexF,
+      "dewpoint_c": dewpointC,
+      "dewpoint_f": dewpointF,
+      "vis_km": visKm,
+      "vis_miles": visMiles,
+      "uv": uv,
+      "gust_mph": gustMph,
+      "gust_kph": gustKph,
+      "air_quality": airQuality.map((k, v) => MapEntry(k, v)),
+    };
+  }
+
+  @override
+  List<Object?> get props => [
+        lastUpdatedEpoch,
+        lastUpdated,
+        tempC,
+        tempF,
+        isDay,
+        condition,
+        windMph,
+        windKph,
+        windDegree,
+        windDir,
+        pressureMb,
+        pressureIn,
+        precipMm,
+        precipIn,
+        humidity,
+        cloud,
+        feelslikeC,
+        feelslikeF,
+        windchillC,
+        windchillF,
+        heatindexC,
+        heatindexF,
+        dewpointC,
+        dewpointF,
+        visKm,
+        visMiles,
+        uv,
+        gustMph,
+        gustKph,
+        airQuality,
+      ];
 }
 
-class ConditionModel {
-  ConditionModel({
+class ConditionModel extends Equatable {
+  const ConditionModel({
     required this.text,
     required this.icon,
     required this.code,
@@ -147,10 +228,21 @@ class ConditionModel {
       code: json["code"],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "text": text,
+      "icon": icon,
+      "code": code,
+    };
+  }
+
+  @override
+  List<Object?> get props => [text, icon, code];
 }
 
-class LocationModel {
-  LocationModel({
+class LocationModel extends Equatable {
+  const LocationModel({
     required this.name,
     required this.region,
     required this.country,
@@ -182,4 +274,21 @@ class LocationModel {
       localtime: json["localtime"],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "name": name,
+      "region": region,
+      "country": country,
+      "lat": lat,
+      "lon": lon,
+      "tz_id": tzId,
+      "localtime_epoch": localtimeEpoch,
+      "localtime": localtime,
+    };
+  }
+
+  @override
+  List<Object?> get props =>
+      [name, region, country, lat, lon, tzId, localtimeEpoch, localtime];
 }
