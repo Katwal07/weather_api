@@ -63,7 +63,7 @@ A. The data layer is responsible for fetching and storing data. It consists of:
 
 
 
-## Acknowledgements
+## Acknowledgements 🫵🏽
 
  - [Weather Api](https://www.weatherapi.com)
  
@@ -97,7 +97,7 @@ The project includes unit tests and bloc tests to ensure functionality.
 ```bash
 flutter test
 ```
-2. Run bloc tests:
+2. Run bloc tests: 
 - Bloc testing is essential for verifying that the correct states are emitted. To run bloc tests:
 ```bash
 flutter test test/../bloc/..._test.dart
