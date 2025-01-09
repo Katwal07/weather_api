@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app_api/core/config/assets/network_image.dart';
 import 'package:weather_app_api/core/config/routes/routes_name.dart';
-import 'package:weather_app_api/core/constant/text_constant.dart';
+import 'package:weather_app_api/common/constant/text_constant.dart';
 import 'package:weather_app_api/core/utils/res/resolution.dart';
 import '../../../core/config/theme/colors.dart';
 

@@ -7,9 +7,10 @@ import 'dart:async' as _i5;
 
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:dio/dio.dart' as _i3;
+import 'package:geolocator/geolocator.dart' as _i13;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:weather_app_api/common/error/exception.dart' as _i10;
-import 'package:weather_app_api/common/error/failure.dart' as _i6;
+import 'package:weather_app_api/core/error/exception.dart' as _i10;
+import 'package:weather_app_api/core/error/failure.dart' as _i6;
 import 'package:weather_app_api/core/network/dio.dart' as _i12;
 import 'package:weather_app_api/modules/home/data/models/weather.dart' as _i11;
 import 'package:weather_app_api/modules/home/data/sources/remote/weather_remote_datasource.dart.dart'
@@ -986,6 +987,15 @@ class MockDioClient extends _i1.Mock implements _i12.DioClient {
           ),
         )),
       ) as _i5.Future<_i3.Response<dynamic>>);
+}
+
+/// A class which mocks [Geolocator].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGeolocator extends _i1.Mock implements _i13.Geolocator {
+  MockGeolocator() {
+    _i1.throwOnMissingStub(this);
+  }
 }
 
 /// A class which mocks [Dio].

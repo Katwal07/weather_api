@@ -4,9 +4,10 @@ import 'package:weather_app_api/common/widgets/appbar.dart';
 import 'package:weather_app_api/common/widgets/snackbar.dart';
 import 'package:weather_app_api/core/config/routes/routes_name.dart';
 import 'package:weather_app_api/core/config/theme/colors.dart';
-import 'package:weather_app_api/core/constant/text_constant.dart';
+import 'package:weather_app_api/common/constant/text_constant.dart';
 import 'package:weather_app_api/core/utils/res/resolution.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/button/button_name_cubit.dart';
+import 'package:weather_app_api/modules/home/presentation/logic/geolocator/geolocator_wrapper.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/geolocator/location_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/hive/hive_cubit.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/weather/weather_cubit.dart';
@@ -28,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           create: (context) => ButtonNameCubit(),
         ),
         BlocProvider(
-          create: (context) => LocationCubit()..getLocation(),
+          create: (context) => LocationCubit(geolocatorWrapper: GeolocatorWrapper())..getLocation(),
         ),
         BlocProvider(
           create: (context) => HiveCubit(),

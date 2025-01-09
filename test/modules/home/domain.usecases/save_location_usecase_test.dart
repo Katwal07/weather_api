@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:weather_app_api/common/error/failure.dart';
+import 'package:weather_app_api/core/error/failure.dart';
 import 'package:weather_app_api/modules/home/domain/entities/location.dart';
 import 'package:weather_app_api/modules/home/domain/repositories/weather_repository.dart';
 import 'package:weather_app_api/modules/home/domain/usecases/save_location_usecase.dart';

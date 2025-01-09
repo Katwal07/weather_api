@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app_api/common/error/failure.dart';
+import 'package:weather_app_api/core/error/failure.dart';
 import 'package:weather_app_api/modules/home/presentation/logic/weather/weather_state.dart';
 
 import '../../../../../core/usecase/usecase.dart';

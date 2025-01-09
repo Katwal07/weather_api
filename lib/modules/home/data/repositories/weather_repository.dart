@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:weather_app_api/common/error/failure.dart';
-import 'package:weather_app_api/common/error/mapping.dart';
+import 'package:weather_app_api/core/error/failure.dart';
+import 'package:weather_app_api/core/error/mapping.dart';
 import 'package:weather_app_api/common/mapper/weather_mapper.dart';
 import 'package:weather_app_api/modules/home/data/models/location.dart';
 import 'package:weather_app_api/modules/home/data/sources/local/weather_local_datasource.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_api/core/config/theme/colors.dart';
-import 'package:weather_app_api/core/constant/text_constant.dart';
+import 'package:weather_app_api/common/constant/text_constant.dart';
 import 'package:weather_app_api/core/utils/res/resolution.dart';
 import 'package:weather_app_api/modules/home/domain/entities/location.dart';
 import 'package:weather_app_api/modules/home/domain/usecases/get_weather_details_usecase.dart';

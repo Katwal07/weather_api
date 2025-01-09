@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather_app_api/core/network/hive_const.dart';
 import 'package:weather_app_api/modules/home/data/models/location.dart';
 
-import '../../../../../common/error/exception.dart';
+import '../../../../../core/error/exception.dart';
 
 abstract class WeatherLocalDatasource {
   Future<Either<AppException, LocationModelForStorage?>> getSavedLocation();

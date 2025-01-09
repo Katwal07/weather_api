@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:weather_app_api/common/error/failure.dart';
+import 'package:weather_app_api/core/error/failure.dart';
 import 'package:weather_app_api/modules/home/domain/entities/weather.dart';
 import 'package:weather_app_api/modules/home/domain/repositories/weather_repository.dart';
 import 'package:weather_app_api/modules/home/domain/usecases/get_weather_details_usecase.dart';

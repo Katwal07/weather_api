@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:weather_app_api/common/error/exception.dart';
+import 'package:weather_app_api/core/error/exception.dart';
 import 'package:weather_app_api/modules/home/data/models/weather.dart';
 import 'package:weather_app_api/modules/home/data/sources/remote/weather_remote_datasource.dart.dart';
 import '../../../mock/mock.mocks.dart';

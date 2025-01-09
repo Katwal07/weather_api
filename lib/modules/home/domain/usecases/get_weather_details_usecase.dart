@@ -3,7 +3,7 @@ import 'package:weather_app_api/core/usecase/usecase.dart';
 import 'package:weather_app_api/modules/home/domain/entities/weather.dart';
 import 'package:weather_app_api/modules/home/domain/repositories/weather_repository.dart';
 import 'package:weather_app_api/service_locator.dart';
-import '../../../../common/error/failure.dart';
+import '../../../../core/error/failure.dart';
 
 class GetWeatherDetailsUsecase extends Usecase<Either<Failure, WeatherEntity>, String , String>{
   @override

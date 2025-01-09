@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:weather_app_api/modules/home/domain/entities/location.dart';
-import '../../../../common/error/failure.dart';
+import '../../../../core/error/failure.dart';
 import '../entities/weather.dart';
 
 abstract class WeatherRepository {
