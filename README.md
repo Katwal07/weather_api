@@ -151,24 +151,25 @@ flutter test test/../bloc/..._test.dart
 │   │   └── widgets/
 │   │       └── helper_widget.dart
 │   └── home/
-│       ├── data/
-│       │   ├── models/
-│       │   │   └── weather_model.dart
-│       │   └── repositories/
-│       │       └── weather_repository.dart
-│       ├── domain/
-│       │   ├── entities/
-│       │   │   └── weather_entity.dart
-│       │   ├── usecases/
-│       │   │   └── get_weather_usecase.dart
-│       ├── presentation/
-│       │   ├── cubit/
-│       │   │   └── weather_cubit.dart
-│       │   ├── pages/
-│       │   │   └── weather_page.dart
-│       │   └── widgets/
-│       │       └── weather_widget.dart
-│       └── di_container.dart
+│   |   ├── data/
+│   |   │   ├── models/
+│   |   │   │   └── weather_model.dart
+│   |   │   └── repositories/
+│   |   │       └── weather_repository.dart
+│   |   ├── domain/
+│   |   │   ├── entities/
+│   |   │   │   └── weather_entity.dart
+│   |   │   ├── usecases/
+│   |   │   │   └── get_weather_usecase.dart
+│   |   ├── presentation/
+│   |   │   ├── cubit/
+│   |   │   │   └── weather_cubit.dart
+│   |   │   ├── pages/
+│   |   │   │   └── weather_page.dart
+│   |   │   └── widgets/
+│   |   │       └── weather_widget.dart
+│   |--- main.dart
+|   |--- di_container.dart
 ```
 
 
