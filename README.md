@@ -169,7 +169,7 @@ flutter test test/../bloc/..._test.dart
 │   |   │   └── widgets/
 │   |   │       └── weather_widget.dart
 │   |--- main.dart
-|   |--- di_container.dart
+|   |--- service_locator.dart
 ```
 
 
