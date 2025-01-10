@@ -21,25 +21,27 @@ class HomeScreenWidget extends StatefulWidget {
     super.key,
   });
 
-  final TextEditingController locationNameCon = TextEditingController();
+ 
 
   @override
   State<HomeScreenWidget> createState() => _HomeScreenWidgetState();
 }
 
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
+   final TextEditingController locationNameCon = TextEditingController();
   @override
   void initState() {
     super.initState();
-    widget.locationNameCon.addListener(() {
-      final text = widget.locationNameCon.text.trim();
+    locationNameCon.addListener(() {
+      final text = locationNameCon.text.trim();
+      print("TextField updated: $text");
       context.read<ButtonNameCubit>().onUpdateButtonName(text);
     });
   }
 
   @override
   void dispose() {
-    widget.locationNameCon.dispose();
+    locationNameCon.dispose();
     super.dispose();
   }
 
@@ -71,7 +73,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
   Widget _buildLocationNameTextField() {
     return CustomTextField(
-      controller: widget.locationNameCon,
+      controller: locationNameCon,
       hintText: TextConstant.enterLocName,
       prefixIcon: Icon(Icons.search),
     );
@@ -92,7 +94,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               return CustomElevatedButton(
                 buttonText: buttonState,
                 onPressed: () {
-                  final locationName = widget.locationNameCon.text.trim();
+                  final locationName = locationNameCon.text.trim();
                   if (locationName.isNotEmpty) {
                     context.read<WeatherCubit>().execute(
                           usecase: sl<GetWeatherDetailsUsecase>(),
@@ -109,7 +111,19 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 },
               );
             }
-            return const SizedBox.shrink();
+              return CustomElevatedButton(
+                buttonText: buttonState,
+                onPressed: () {
+                  final locationName = locationNameCon.text.trim();
+
+                  context.read<WeatherCubit>().execute(
+                        usecase: sl<GetWeatherDetailsUsecase>(),
+                        param1: locationName,
+                        param2: "yes",
+                      );
+                },
+              );
+           
           },
         );
       },

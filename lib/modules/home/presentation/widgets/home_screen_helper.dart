@@ -22,10 +22,12 @@ class HomeScreenHelper extends StatelessWidget {
       child: BlocListener<HomeHelperCubit, HomeHelperState>(
         listener: (context, state) {
           if (state is HomeHelperLoadedState) {
+            FocusScope.of(context).unfocus();
             Navigator.of(context).pop();
           }
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           body: Stack(
             children: [
               /// Custom Background Frame of Home Helper Screen
@@ -34,7 +36,7 @@ class HomeScreenHelper extends StatelessWidget {
                 /// Custom Padding of Home Helper Screen
                 padding: _buildPadding(),
                 child: Column(
-                  spacing: 10.2 * AppResolution.heightMultiplier,
+                  spacing: 8 * AppResolution.heightMultiplier,
                   children: [
                     /// Heading Text of Home Helper Screen
                     _buildTextView(context),
@@ -90,6 +92,7 @@ class HomeScreenHelper extends StatelessWidget {
         backgroundColor: AppColors.primaryColor,
       ),
       onPressed: () {
+        FocusScope.of(context).unfocus();
         Navigator.of(context).pop();
       },
       child: Text(

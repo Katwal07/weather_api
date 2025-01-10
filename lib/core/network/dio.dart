@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:weather_app_api/core/network/api_const.dart';
 
 class DioClient {
   late Dio dio;
@@ -8,7 +7,6 @@ class DioClient {
   DioClient()
       : dio = Dio(
           BaseOptions(
-            baseUrl: ApiConstant.baseUrl,
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',
             },
@@ -19,9 +17,15 @@ class DioClient {
           ),
         );
 
-  Future<Response> getRequest({required String path}) async {
+  Future<Response> getRequest({
+    required String path,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     try {
-      final Response response = await dio.get(path);
+      final Response response = await dio.get(
+        path,
+        queryParameters: queryParameters,
+      );
       return response;
     } on DioException {
       rethrow;

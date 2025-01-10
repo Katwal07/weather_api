@@ -23,24 +23,24 @@ This is a weather application built using Flutter, providing users with weather 
 - Dependency Injection: The process of providing dependencies (such as repositories, use cases) from the outside, rather than creating them inside the class, making the app easier to test and manage.
 ## Architecture Overview 🕍
 - The app follows Clean Architecture, which is divided into multiple layers:
-1. Presentation Layer
+1. Presentation Layer 👨🏻‍✈️
 A. This layer is responsible for the UI and user interaction. It consists of:
 - Cubits (Business Logic): Handles states and events related to the UI. In this app, WeatherCubit is used to handle the state of weather data.
 - Widgets: UI components that interact with Cubits and display data to the user.
-2. Domain Layer
+2. Domain Layer 🌉
 A. The domain layer contains business logic and entities. It consists of:
 - Usecases: These represent specific actions that can be performed, like fetching weather data. They take in parameters, interact with repositories, and return results.
 - Entities: These are simple data structures that represent core business objects. In this app, WeatherEntity is the main entity representing weather data.
 - Repository Interface: The domain layer defines the interface for the repository (e.g., WeatherRepository). This interface defines the methods that are needed to interact with the data layer.
-3. Data Layer
+3. Data Layer 🛜
 A. The data layer is responsible for fetching and storing data. It consists of:
 - Repositories: These handle the data retrieval logic and provide data to the domain layer. The repository implementation (e.g., WeatherRepositoryImpl) is defined in the data layer and implements the repository interface from the domain layer.
 - Data Sources: These interact with external systems (e.g., weather API) to fetch data. In the data layer, you would have classes like WeatherRemoteDataSource which interact with the API.
 - Models: In the data layer, we would also define models that represent the response data coming from the external source (e.g., API).
-4. Core Layer
+4. Core Layer ✊
 - This layer contains foundational utilities and abstractions that can be reused across multiple modules.
 - Includes things like base error handling, use cases, failure classes, and base models.
-5. Commom Layer
+5. Commom Layer 🤲
 - This layer contains common logic that is shared across different parts of the app, but isn't directly tied to business logic. It can be considered a utility or helper layer.
 - Includes shared widgets, helper methods, constants, etc.
 

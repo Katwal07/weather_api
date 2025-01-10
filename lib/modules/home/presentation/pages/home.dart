@@ -79,6 +79,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         onPressed: () {
+          FocusScope.of(context).unfocus();
           Navigator.pushNamed(
             context,
             AppRoutesName.homeHelperScreen,

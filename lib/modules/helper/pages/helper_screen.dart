@@ -23,6 +23,7 @@ class HelperScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
+          resizeToAvoidBottomInset: false,
           /// HelperScreenDetails Widget
           body: HelperScreenDetails(),
         ),

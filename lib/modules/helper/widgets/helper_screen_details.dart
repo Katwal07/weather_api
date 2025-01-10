@@ -21,7 +21,7 @@ class HelperScreenDetails extends StatelessWidget {
           /// Custom Padding of Helper Screen
           padding: _buildPadding(),
           child: Column(
-            spacing: 32.2 * AppResolution.heightMultiplier,
+            spacing: 28 * AppResolution.heightMultiplier,
             children: [
               /// Heading Text of Helper Screen
               _buildTextView(context),
